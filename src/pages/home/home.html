@@ -1,14 +1,61 @@
+<!--
+ Generated template for the HomePage page.
+ See http://ionicframework.com/docs/components/#navigation for more info on
+ Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <ion-navbar color="secondary">
+             <ion-title>Gallery App</ion-title>
+    </ion-navbar>
+  </ion-header>
+ <ion-content padding>
+  <div *ngIf="hasIt === 0">
+    <button ion-button round outline (click)= "navigate('u')">Upload Files</button>
+    <button ion-button round outline (click)= "navigate('v')">View Gallery</button>
+  </div>
+  <ion-row *ngIf="hasIt === 1">
+      <ion-col>
+          <button ion-button round outline (click)="viewUploads('p')"><br> <ion-icon ios="ios-camera" md="md-camera"></ion-icon></button>
+        </ion-col>
+        <ion-col>
+            <button ion-button round outline (click)="uploads('audio')"> <br> <ion-icon ios="ios-musical-notes" md="md-musical-notes"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-button round outline (click)="uploads('video')"> <br> <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon></button>
+            </ion-col>
+            <button ion-button round outline (click)= "navigate('b')">  <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+  </ion-row>
+  <ion-row *ngIf="hasIt === 2">
+      <ion-col>
+          <button ion-button round outline (click)="viewUploads('p')"><br> <ion-icon ios="ios-camera" md="md-camera"></ion-icon></button>
+        </ion-col>
+        <ion-col>
+            <button ion-button block round outline (click)="viewUploads('a')"><br> <ion-icon ios="ios-musical-notes" md="md-musical-notes"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-button round outline (click)="viewUploads('v')"><br> <ion-icon ios="ios-videocam" md="md-videocam"></ion-icon></button>
+            </ion-col>
+            <button ion-button round outline (click)= "navigate('b')">  <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+  </ion-row>
+  <div *ngIf="moo === 1">
+    <img *ngFor="let imgUrl of images" src={{imgUrl}}>
+    <button ion-button round outline (click)= "navigate('b')"> <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+  </div>
+  <div *ngIf="moo === 3">
+      <video *ngFor="let video of videos" src={{video}} type="video/mp4" controls  width="320" height="240"></video>
+      <button ion-button round outline (click)= "navigate('b')">  <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+ 
+    </div>
+    <div *ngIf="moo === 4">
+      <!-- <video  type="audio/mp4" controls  width="320" height="240"></video> -->
+      <audio *ngFor="let audio of audios"  controls>
+ 
+        <source src={{audio}} type="audio/mpeg">
+        <source src={{audio}} type="audio/ogg">
+        <source src={{audio}} type="audio/wav">
+        Your browser does not support the audio tag.
+      </audio>
+      <button ion-button round outline (click)= "navigate('b')"> <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+ 
+    </div>
+ </ion-content>
